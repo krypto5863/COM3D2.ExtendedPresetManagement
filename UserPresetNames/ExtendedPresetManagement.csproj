@@ -59,19 +59,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="0OldMain.cs" />
+    <None Include="Old\0OldMain.cs" />
     <Compile Include="MyUI.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="0OldRenamePrompt.cs">
+    <None Include="Old\0OldRenamePrompt.cs">
       <SubType>Form</SubType>
     </None>
-    <None Include="0OldRenamePrompt.Designer.cs">
+    <None Include="Old\0OldRenamePrompt.Designer.cs">
       <DependentUpon>0OldRenamePrompt.cs</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="0OldRenamePrompt.resx">
+    <None Include="Old\0OldRenamePrompt.resx">
       <DependentUpon>0OldRenamePrompt.cs</DependentUpon>
     </None>
   </ItemGroup>
