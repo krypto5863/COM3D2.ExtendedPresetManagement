@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ExtendedPresetManagement</RootNamespace>
-    <AssemblyName>COM3D2.ExtendedPresetManagement.Plugin</AssemblyName>
+    <AssemblyName>COM3D2.ExtendedPresetManagement</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

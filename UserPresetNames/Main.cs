@@ -25,7 +25,7 @@ namespace ExtendedPresetManagement
 		public static string OriginalPresetDirectory = null;
 		public static string PreviousPresetDirectory = null;
 		public static bool PresetPanelOpen = false;
-		private static bool RunOnce = true;
+		public static bool RunOnce = true;
 		public static string[] PresetFolders; 
 		private static ConfigEntry<bool> SaveAsDefault;
 

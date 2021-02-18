@@ -76,6 +76,11 @@ namespace ExtendedPresetManagement
 			{
 				Process.Start(Main.this4.PresetDirectory);
 			}
+			if (GUILayout.Button("Refresh"))
+			{
+				Main.RunOnce = true;
+				Main.this3.UpdatePresetList();
+			}
 		}
 	}
 }
