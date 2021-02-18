@@ -11,7 +11,7 @@ This is a simple plugin for COM3D2 that allows users to organize presets into fo
 
 1. Make new folders in your preset folder (pressing the button from the directory changer will take you there)
 2. Place or save your presets inside.
-3. The preset panel is refreshed and new folders are found when you reopen the preset panel, so switching away and back is all you need to do.
+3. Press the Refresh button to load new folders and presets.
 4. Enjoy.
 
 Enjoy and don't abuse your meidos!
