@@ -7,6 +7,9 @@ This is a simple plugin for COM3D2 that allows users to organize presets into fo
 - Small In-game UI that shows up when you're on the preset panel that allows you to easily and quickly change folders
 - Robust saving allowing you to overwrite, rename and replace presets to wherever you want (the default, can be changed in the configuration).
 
+# Installation #
+This is a BepinEx plugin, so the dll file found in the release section goes into `BepinEx/plugins`.
+
 # Usage # 
 
 1. Make new folders in your preset folder (pressing the button from the directory changer will take you there)
