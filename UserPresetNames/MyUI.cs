@@ -12,17 +12,27 @@ namespace ExtendedPresetManagement
 	{
 
 		private static Rect windowRect = new Rect(Screen.width / 2.10f, Screen.height / 1.5f, Screen.width / 12, Screen.height / 6);
-		private static readonly int WindowID = 7777777;
+		private static Rect windowRectPMI = new Rect(Screen.width * .275f, Screen.height * 0f, Screen.width / 12, Screen.height / 6);
+		private const int WindowID = 7777777;
 		private static Vector2 scrollPosition = Vector2.zero;
 
-		public static void Start() 
+		public static void Start(bool PMI = false) 
 		{
 
-			windowRect = GUILayout.Window(WindowID, windowRect, GuiWindowControls, "Preset Directory Changer");
+			//UnityEngine.Debug.Log("Opening UI");
+
+			if (PMI)
+			{
+				windowRectPMI = GUILayout.Window(WindowID, windowRectPMI, GuiWindowControls, "Preset Directory Changer");
+			}
+			else
+			{
+				windowRect = GUILayout.Window(WindowID, windowRect, GuiWindowControls, "Preset Directory Changer");
+			}
 
 		}
 
-		private static void GuiWindowControls(int windowID) 
+		public static void GuiWindowControls(int windowID = WindowID) 
 		{
 			GUI.DragWindow(new Rect(0, 0, 10000, 20));
 
@@ -35,7 +45,11 @@ namespace ExtendedPresetManagement
 				if (GUILayout.Button("Select"))
 				{
 					Main.CustomPresetDirectory = null;
-					Main.this3.UpdatePresetList();
+
+					if (Main.this3 != null)
+					{
+						Main.this3.UpdatePresetList();
+					}
 				}
 				GUILayout.Label("Root");
 			}
@@ -59,7 +73,10 @@ namespace ExtendedPresetManagement
 					if (GUILayout.Button("Select"))
 					{
 						Main.CustomPresetDirectory = path;
-						Main.this3.UpdatePresetList();
+						if (Main.this3 != null)
+						{
+							Main.this3.UpdatePresetList();
+						}
 					}
 					GUILayout.Label(shortpath);
 				} else 
@@ -79,7 +96,10 @@ namespace ExtendedPresetManagement
 			if (GUILayout.Button("Refresh"))
 			{
 				Main.RunOnce = true;
-				Main.this3.UpdatePresetList();
+				if (Main.this3 != null)
+				{
+					Main.this3.UpdatePresetList();
+				}
 			}
 		}
 	}

@@ -46,6 +46,9 @@
     <Reference Include="BepInEx">
       <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\BepInEx.dll</HintPath>
     </Reference>
+    <Reference Include="COM3D2.PropMyItem.Plugin">
+      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\COM3D2.PropMyItem.Plugin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -57,11 +60,15 @@
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityInjector">
+      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\UnityInjector.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Old\0OldMain.cs" />
     <Compile Include="MyUI.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="PMIPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Old\0OldRenamePrompt.cs">
       <SubType>Form</SubType>

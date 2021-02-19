@@ -14,6 +14,7 @@ using UnityEngine.SceneManagement;
 namespace ExtendedPresetManagement
 {
 	[BepInPlugin("ExtendedPresetManagement", "ExtendedPresetManagement", "1.0.0.0")]
+	[BepInDependency("org.bepinex.plugins.unityinjectorloader", BepInDependency.DependencyFlags.SoftDependency)]
 	public class Main : BaseUnityPlugin
 	{
 		public static Harmony harmony;
@@ -29,11 +30,20 @@ namespace ExtendedPresetManagement
 		public static bool RunOnce = true;
 		public static string[] PresetFolders; 
 		private static ConfigEntry<bool> SaveAsDefault;
+		public static bool PMIUIStatus = false;
 
 		void Awake()
 		{
 			//We set our patcher so we can call it back and patch dynamically as needed.
 			harmony = Harmony.CreateAndPatchAll(typeof(Main));
+
+			try {
+				Harmony.CreateAndPatchAll(typeof(PMIPatch));
+			}
+			catch {
+				Debug.LogWarning("PMI was not patched! Might not be loaded...");
+			}
+
 			@this2 = this;
 
 			SavePrompt.AddExtension = true;
@@ -49,8 +59,13 @@ namespace ExtendedPresetManagement
 		{
 			if (PresetPanelOpen == true)
 			{
-				if (RunOnce) 
+				if (RunOnce)
 				{
+
+					if (Main.OriginalPresetDirectory == null)
+					{
+						_ = this4.PresetDirectory;
+					}
 					PresetFolders = Directory.GetDirectories(Main.OriginalPresetDirectory);
 
 					RunOnce = false;
@@ -58,9 +73,25 @@ namespace ExtendedPresetManagement
 
 				MyUI.Start();
 			}
-			else 
+			else if (PMIUIStatus) 
 			{
-				if (!RunOnce) 
+				if (RunOnce)
+				{
+
+					if (Main.OriginalPresetDirectory == null)
+					{
+						_ = this4.PresetDirectory;
+					}
+					PresetFolders = Directory.GetDirectories(Main.OriginalPresetDirectory);
+
+					RunOnce = false;
+				}
+
+				MyUI.Start(true);
+			}
+			else
+			{
+				if (!RunOnce)
 				{
 					RunOnce = true;
 				}
@@ -76,7 +107,7 @@ namespace ExtendedPresetManagement
 
 			this3 = __instance;
 
-			Debug.Log("Preset panel active changed to "+ PresetPanelOpen);
+			//Debug.Log("Preset panel active changed to "+ PresetPanelOpen);
 		}
 
 		[HarmonyPatch(typeof(SceneEdit), "OnDestroy")]
@@ -85,8 +116,14 @@ namespace ExtendedPresetManagement
 		{
 			PresetPanelOpen = false;
 		}
+		[HarmonyPatch(typeof(CharacterMgr), "Awake")]
+		[HarmonyPostfix]
+		static void InstanceSaver(ref CharacterMgr __instance) 
+		{
+			this4 = __instance;
+		}
 
-		[HarmonyPatch(typeof(CharacterMgr), "PresetDirectory", MethodType.Getter)]
+[HarmonyPatch(typeof(CharacterMgr), "PresetDirectory", MethodType.Getter)]
 		[HarmonyPrefix]
 		static bool PatchPresetDirectoryGetter (ref CharacterMgr __instance, ref string __result)
 		{
