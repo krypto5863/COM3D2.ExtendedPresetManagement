@@ -9,6 +9,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Windows.Forms;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ExtendedPresetManagement
 {
@@ -42,7 +43,20 @@ namespace ExtendedPresetManagement
 			SavePrompt.Filter = "Preset Files |*.preset";
 
 			SaveAsDefault = Config.Bind("General", "Save As By Default", true, "This denotes whether the save as prompt (save file dialog) is opened by default when you save a preset. Setting it to false will save presets normally unless you hold CTRL while saving.");
+
+			SceneManager.sceneLoaded += OnSceneLoaded;
 		}
+
+		void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+		{
+			if (PresetPanelOpen == true) {
+				if (this3 == null || scene.name != "SceneEdit")
+				{
+					PresetPanelOpen = false;
+				}
+			}
+		}
+
 		void OnGUI() 
 		{
 			if (PresetPanelOpen == true)
@@ -70,7 +84,7 @@ namespace ExtendedPresetManagement
 		[HarmonyPostfix]
 		static void PresetPanelStatusChanged(ref PresetMgr __instance)
 		{
-			PresetPanelOpen = (AccessTools.Field(typeof(PresetMgr), "m_goPresetPanel").GetValue(__instance) as GameObject).active;
+			PresetPanelOpen = (AccessTools.Field(typeof(PresetMgr), "m_goPresetPanel").GetValue(__instance) as GameObject).activeSelf;
 
 			this3 = __instance;
 
