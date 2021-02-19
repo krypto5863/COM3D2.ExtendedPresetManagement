@@ -43,18 +43,6 @@ namespace ExtendedPresetManagement
 			SavePrompt.Filter = "Preset Files |*.preset";
 
 			SaveAsDefault = Config.Bind("General", "Save As By Default", true, "This denotes whether the save as prompt (save file dialog) is opened by default when you save a preset. Setting it to false will save presets normally unless you hold CTRL while saving.");
-
-			SceneManager.sceneLoaded += OnSceneLoaded;
-		}
-
-		void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-		{
-			if (PresetPanelOpen == true) {
-				if (this3 == null || scene.name != "SceneEdit")
-				{
-					PresetPanelOpen = false;
-				}
-			}
 		}
 
 		void OnGUI() 
@@ -89,6 +77,13 @@ namespace ExtendedPresetManagement
 			this3 = __instance;
 
 			Debug.Log("Preset panel active changed to "+ PresetPanelOpen);
+		}
+
+		[HarmonyPatch(typeof(SceneEdit), "OnDestroy")]
+		[HarmonyPostfix]
+		static void ExitingEditMode()
+		{
+			PresetPanelOpen = false;
 		}
 
 		[HarmonyPatch(typeof(CharacterMgr), "PresetDirectory", MethodType.Getter)]
