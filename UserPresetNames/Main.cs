@@ -37,11 +37,21 @@ namespace ExtendedPresetManagement
 			//We set our patcher so we can call it back and patch dynamically as needed.
 			harmony = Harmony.CreateAndPatchAll(typeof(Main));
 
-			try {
-				Harmony.CreateAndPatchAll(typeof(PMIPatch));
+			try 
+			{
+				harmony.PatchAll(typeof(PMIPatch));
 			}
 			catch {
 				Debug.LogWarning("PMI was not patched! Might not be loaded...");
+			}
+
+			try
+			{
+				harmony.PatchAll(typeof(ExPresetPatch));
+			}
+			catch
+			{
+				Debug.LogWarning("ExternalPreset was not patched! Might not be loaded...");
 			}
 
 			@this2 = this;
@@ -84,7 +94,9 @@ namespace ExtendedPresetManagement
 					}
 					PresetFolders = Directory.GetDirectories(Main.OriginalPresetDirectory);
 
-					RunOnce = false;
+					//RunOnce = false;
+
+					//Debug.Log("Runonce triggered!");
 				}
 
 				MyUI.Start(true);
@@ -171,9 +183,8 @@ namespace ExtendedPresetManagement
 					if (Path.GetDirectoryName(SavePrompt.FileName) == "")
 					{
 						PreviousPresetDirectory = lthis.PresetDirectory;
-						CustomPresetDirectory = "null";
+						//CustomPresetDirectory = "null";
 						return null;
-
 					}
 
 					PreviousPresetDirectory = lthis.PresetDirectory;
@@ -183,7 +194,6 @@ namespace ExtendedPresetManagement
 
 					return Path.GetFileName(SavePrompt.FileName);
 				}
-
 				return str;
 			}),
 			new CodeInstruction(OpCodes.Stloc_S, 5)
@@ -198,7 +208,6 @@ namespace ExtendedPresetManagement
 			.Insert(
 			Transpilers.EmitDelegate<Action>(() =>
 				{
-
 					//Debug.Log("Setting the preset directory back from the save directory.");
 
 					if (PreviousPresetDirectory != OriginalPresetDirectory && PreviousPresetDirectory != null)
