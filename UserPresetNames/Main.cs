@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
 
 namespace ExtendedPresetManagement
 {
-	[BepInPlugin("ExtendedPresetManagement", "ExtendedPresetManagement", "1.0.0.0")]
+	[BepInPlugin("ExtendedPresetManagement", "ExtendedPresetManagement", "1.3.0.0")]
 	[BepInDependency("org.bepinex.plugins.unityinjectorloader", BepInDependency.DependencyFlags.SoftDependency)]
 	public class Main : BaseUnityPlugin
 	{
