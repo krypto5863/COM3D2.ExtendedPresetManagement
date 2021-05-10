@@ -32,28 +32,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\BepinEx\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\allalone\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\Assembly-CSharp-firstpass.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-UnityScript-firstpass">
-      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\Assembly-UnityScript-firstpass.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\GameOriginal 1.55.1\assembly\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\BepInEx.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\BepinEx\BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="COM3D2.ExternalPreset.Managed">
-      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\COM3D2.ExternalPreset.Managed.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\CommunityModPlugins\COM3D2.ExternalPreset.Managed.dll</HintPath>
     </Reference>
     <Reference Include="COM3D2.ExternalSaveData.Managed">
-      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\COM3D2.ExternalSaveData.Managed.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\CommunityModPlugins\COM3D2.ExternalSaveData.Managed.dll</HintPath>
     </Reference>
     <Reference Include="COM3D2.PropMyItem.Plugin">
-      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\COM3D2.PropMyItem.Plugin.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\CommunityModPlugins\COM3D2.PropMyItem.Plugin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,10 +58,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\GameOriginal 1.55.1\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityInjector">
-      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\UnityInjector.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\Sybaris\UnityInjector.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
