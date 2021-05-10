@@ -64,7 +64,7 @@ namespace ExtendedPresetManagement
 
 			foreach (string path in Main.PresetFolders) 
 			{
-				shortpath = Path.GetFileName(path);
+				shortpath = path.Replace(Main.OriginalPresetDirectory + "\\", "");
 
 				GUILayout.BeginHorizontal();
 

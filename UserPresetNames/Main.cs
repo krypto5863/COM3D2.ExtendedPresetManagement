@@ -76,7 +76,9 @@ namespace ExtendedPresetManagement
 					{
 						_ = this4.PresetDirectory;
 					}
-					PresetFolders = Directory.GetDirectories(Main.OriginalPresetDirectory);
+
+
+					PresetFolders = Directory.GetDirectories(Main.OriginalPresetDirectory, "*", SearchOption.AllDirectories);
 
 					RunOnce = false;
 				}
@@ -92,7 +94,7 @@ namespace ExtendedPresetManagement
 					{
 						_ = this4.PresetDirectory;
 					}
-					PresetFolders = Directory.GetDirectories(Main.OriginalPresetDirectory);
+					PresetFolders = Directory.GetDirectories(Main.OriginalPresetDirectory, "*", SearchOption.AllDirectories);
 
 					//RunOnce = false;
 
