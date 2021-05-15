@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
 
 namespace ExtendedPresetManagement
 {
-	[BepInPlugin("ExtendedPresetManagement", "ExtendedPresetManagement", "1.4.0.0")]
+	[BepInPlugin("ExtendedPresetManagement", "ExtendedPresetManagement", "1.4.1")]
 	[BepInDependency("org.bepinex.plugins.unityinjectorloader", BepInDependency.DependencyFlags.SoftDependency)]
 	public class Main : BaseUnityPlugin
 	{
@@ -28,16 +28,17 @@ namespace ExtendedPresetManagement
 		public static string PreviousPresetDirectory = null;
 		public static bool PresetPanelOpen = false;
 		public static bool RunOnce = true;
-		public static string[] PresetFolders; 
+		public static string[] PresetFolders;
 		private static ConfigEntry<bool> SaveAsDefault;
 		public static bool PMIUIStatus = false;
+		private static bool ViewMode;
 
 		void Awake()
 		{
 			//We set our patcher so we can call it back and patch dynamically as needed.
 			harmony = Harmony.CreateAndPatchAll(typeof(Main));
 
-			try 
+			try
 			{
 				harmony.PatchAll(typeof(PMIPatch));
 			}
@@ -65,9 +66,9 @@ namespace ExtendedPresetManagement
 			SaveAsDefault = Config.Bind("General", "Save As By Default", true, "This denotes whether the save as prompt (save file dialog) is opened by default when you save a preset. Setting it to false will save presets normally unless you hold CTRL while saving.");
 		}
 
-		void OnGUI() 
+		void OnGUI()
 		{
-			if (PresetPanelOpen == true)
+			if (PresetPanelOpen == true && ViewMode == false)
 			{
 				if (RunOnce)
 				{
@@ -85,7 +86,7 @@ namespace ExtendedPresetManagement
 
 				MyUI.Start();
 			}
-			else if (PMIUIStatus) 
+			else if (PMIUIStatus)
 			{
 				if (RunOnce)
 				{
@@ -124,11 +125,25 @@ namespace ExtendedPresetManagement
 			//Debug.Log("Preset panel active changed to "+ PresetPanelOpen);
 		}
 
-		[HarmonyPatch(typeof(SceneEdit), "OnDestroy")]
+		[HarmonyPatch(typeof(SceneEdit), "FromView")]
 		[HarmonyPostfix]
+		static void FromView()
+		{
+			ViewMode = false;
+		}
+		[HarmonyPatch(typeof(SceneEdit), "ToView")]
+		[HarmonyPostfix]
+		static void ToView()
+		{
+			ViewMode = true;
+		}
+
+		[HarmonyPatch(typeof(SceneEdit), "OnDestroy")]
+		[HarmonyPrefix]
 		static void ExitingEditMode()
 		{
 			PresetPanelOpen = false;
+			ViewMode = false;
 		}
 		[HarmonyPatch(typeof(CharacterMgr), "Awake")]
 		[HarmonyPostfix]

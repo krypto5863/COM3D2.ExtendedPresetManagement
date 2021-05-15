@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security;
+using System.Security.Permissions;
 using System.Text;
 using UnityEngine;
+
+[module: UnverifiableCode]
+[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 
 namespace ExtendedPresetManagement
 {
 	class MyUI
 	{
-
 		private static Rect windowRect = new Rect(Screen.width / 2.10f, Screen.height / 1.5f, Screen.width / 12, Screen.height / 6);
 		private static Rect windowRectPMI = new Rect(Screen.width * .275f, Screen.height * 0f, Screen.width / 12, Screen.height / 6);
 		private const int WindowID = 7777777;

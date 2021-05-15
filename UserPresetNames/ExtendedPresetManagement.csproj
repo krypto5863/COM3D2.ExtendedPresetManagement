@@ -35,7 +35,13 @@
       <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\BepinEx\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\GameOriginal 1.55.1\assembly\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\GameOriginal 1.55.1\assembly stubbed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\GameOriginal 1.55.1\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-UnityScript-firstpass">
+      <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\GameOriginal 1.55.1\Assembly-UnityScript-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
       <HintPath>..\..\..\..\Desktop\Meido Assemblies\COM Assemblies\BepinEx\BepInEx.dll</HintPath>
