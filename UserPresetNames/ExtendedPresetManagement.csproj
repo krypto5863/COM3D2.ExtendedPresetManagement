@@ -73,9 +73,11 @@
   <ItemGroup>
     <None Include="Old\0OldMain.cs" />
     <Compile Include="ExPresetPatch.cs" />
+    <Compile Include="CountDownText.cs" />
     <Compile Include="MyUI.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="PMIPatch.cs" />
+    <None Include="PresetInfoPanel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Old\0OldRenamePrompt.cs">
       <SubType>Form</SubType>
