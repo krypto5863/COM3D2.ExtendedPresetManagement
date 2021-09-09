@@ -1,5 +1,5 @@
 # COM3D2.ExtendedPresetManagement
-This is a simple plugin for COM3D2 that allows users to organize presets into folder and switch into them on the fly and allows the saving of presets to anywhere, with any name.
+This is a simple plugin for COM3D2 that allows users to organize presets into folders and switch into them on the fly and allows the saving of presets to anywhere, with any name.
 
 # Highlights #
 
