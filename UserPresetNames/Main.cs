@@ -359,36 +359,37 @@ namespace ExtendedPresetManagement
 							FileName = OriginalPresetDirectory + "\\Autosave" + "\\" + str;
 						}
 
-						var autosavedFiles = Directory.GetFiles(Path.GetDirectoryName(FileName), "*.preset").ToList();
-
-#if DEBUG
-						BepLogger.LogDebug("Fetched files in autosaves");
-#endif
-
-						if (autosavedFiles.Count() > MaximumAutoSaves.Value) 
+						if (Directory.Exists(Path.GetDirectoryName(FileName)))
 						{
+							var autosavedFiles = Directory.GetFiles(Path.GetDirectoryName(FileName), "*.preset").ToList();
 
 #if DEBUG
-							BepLogger.LogDebug("Count was higher");
+							BepLogger.LogDebug("Fetched files in autosaves");
 #endif
 
-							autosavedFiles = autosavedFiles.OrderByDescending(file => File.GetCreationTimeUtc(file)).ToList();
-
-#if DEBUG
-							BepLogger.LogDebug("done ordering");
-#endif
-
-							while (autosavedFiles.Count() > MaximumAutoSaves.Value) 
+							if (autosavedFiles.Count() > MaximumAutoSaves.Value)
 							{
 #if DEBUG
-								BepLogger.LogDebug("removing " + autosavedFiles.Last());
+								BepLogger.LogDebug("Count was higher");
 #endif
 
-								File.Delete(autosavedFiles.Last());
+								autosavedFiles = autosavedFiles.OrderByDescending(file => File.GetCreationTimeUtc(file)).ToList();
 
-								File.Delete(autosavedFiles.Last() + ".expreset.xml");
+#if DEBUG
+								BepLogger.LogDebug("done ordering");
+#endif
 
-								autosavedFiles.Remove(autosavedFiles.Last());
+								while (autosavedFiles.Count() > MaximumAutoSaves.Value)
+								{
+#if DEBUG
+									BepLogger.LogDebug("removing " + autosavedFiles.Last());
+#endif
+									File.Delete(autosavedFiles.Last());
+
+									File.Delete(autosavedFiles.Last() + ".expreset.xml");
+
+									autosavedFiles.Remove(autosavedFiles.Last());
+								}
 							}
 						}
 					}
