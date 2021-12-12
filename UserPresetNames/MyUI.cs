@@ -15,16 +15,13 @@ namespace ExtendedPresetManagement
 {
 	class MyUI
 	{
-		private static Rect windowRect = new Rect(Screen.width / 2.10f, Screen.height / 1.5f, Screen.width / 12, Screen.height / 6);
-		private static Rect windowRectPMI = new Rect(Screen.width * .275f, Screen.height * 0f, Screen.width / 12, Screen.height / 6);
+		private static Rect windowRect = new Rect(Screen.width / 2.10f, Screen.height / 1.5f, (Screen.width / 12) * Main.UIWidthMult.Value, (Screen.height / 6) * Main.UIHeightMult.Value);
+		private static Rect windowRectPMI = new Rect(Screen.width * .275f, Screen.height * 0f, (Screen.width / 12) * Main.UIWidthMult.Value, (Screen.height / 6) * Main.UIHeightMult.Value);
 		private const int WindowID = 7777777;
 		private static Vector2 scrollPosition = Vector2.zero;
 
 		public static void Start(bool PMI = false) 
 		{
-
-			//UnityEngine.Debug.Log("Opening UI");
-
 			if (PMI)
 			{
 				windowRectPMI = GUILayout.Window(WindowID, windowRectPMI, GuiWindowControls, "Preset Directory Changer");

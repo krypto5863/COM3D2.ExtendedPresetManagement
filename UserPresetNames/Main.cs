@@ -47,6 +47,9 @@ namespace ExtendedPresetManagement
 		private static ConfigEntry<float> AutoSaveInterval;
 		private static ConfigEntry<int> MaximumAutoSaves;
 
+		internal static ConfigEntry<float> UIWidthMult;
+		internal static ConfigEntry<float> UIHeightMult;
+
 		private static IEnumerator AutoSaver;
 		private static CountDownText ScreenText;
 
@@ -89,6 +92,8 @@ namespace ExtendedPresetManagement
 
 			AutoSave = Config.Bind("Autosave", "Use Autosaves", true, "Whether or not the system will autosave.");
 
+			
+
 			AutoSave.SettingChanged += (obj, arg) =>
 			{
 				if (!AutoSave.Value)
@@ -124,6 +129,9 @@ namespace ExtendedPresetManagement
 			MaximumAutoSaves = Config.Bind("Autosave", "Max Number of Autosaves Kept", 50, "When the number of autosaves breaches this limit, we'll delete the oldest presets until we are once again under the limit.");
 
 			AutoSaveText = Config.Bind("Autosave", "Show Autosave Text", true, "Whether the autosave countdown text will appear on screen.");
+
+			UIWidthMult = Config.Bind("UI", "UI Width Multiplier (Requires Restart)", 1f, "Incase the size of your UI isn't ideal.");
+			UIHeightMult = Config.Bind("UI", "UI Height Multiplier (Requires Restart)", 1f, "Incase the size of your UI isn't ideal.");
 
 			SceneManager.sceneLoaded += (s, e) =>
 			{
